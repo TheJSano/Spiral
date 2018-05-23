@@ -1,5 +1,9 @@
 package TheodorusSpiral;
 
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+
 import javafx.application.Application;
 import javafx.geometry.Point2D;
 import javafx.scene.Scene;
@@ -47,11 +51,24 @@ public class TheodorusSpiarl extends Application {
 
 		temp++;
 		angle -= Math.toDegrees(Math.acos(Math.sqrt(temp - 1) / Math.sqrt(temp)));
+		
+		
+		PrintWriter writer;
+		try {
+			writer = new PrintWriter("data.txt", "UTF-8");
+			writer.println("Angle: " + angle);
+			writer.println("X2: " + x2);
+			writer.println("Y2 :" + y2);
+			writer.println("Temp :" + temp + "\n");
+			writer.close();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
+		
 
-		System.out.println("Angle: " + angle);
-		System.out.println("X2: " + x2);
-		System.out.println("Y2 :" + y2);
-		System.out.println("Temp :" + temp + "\n");
+	
 
 		drawSpiral(x1, y1, angle, depth - 1, p, temp);
 
@@ -70,6 +87,10 @@ public class TheodorusSpiarl extends Application {
 
 			p.getChildren().addAll(line);
 		}
+	}
+	
+	private void formatData() {
+		
 	}
 
 	public static void main(String[] args) {
