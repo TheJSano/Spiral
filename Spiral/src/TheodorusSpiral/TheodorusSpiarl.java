@@ -89,10 +89,6 @@ public class TheodorusSpiarl extends Application {
 		}
 	}
 	
-	private void formatData() {
-		
-	}
-
 	public static void main(String[] args) {
 		launch(args);
 	}
